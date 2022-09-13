@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatiaocao.myblog.mapper.ArticleMapper">
+
+
+    <insert id="saveArticle">
+        insert
+            into
+            article(  articleId,
+            author,
+            originalAuthor,
+            articleTitle,
+            articleContent,
+            articleTags,
+            articleType,
+            articleCategories,
+            publishDate,
+            updateDate,
+            articleUrl,
+            articleTabloid,
+            likes,
+            lastArticleId,
+            nextArticleId)
+    values (#{articleId},
+          #{author},
+          #{originalAuthor},
+          #{articleTitle},
+          #{articleContent},
+          #{articleTags},
+          #{articleType},
+          #{articleCategories},
+          #{publishDate},
+          #{updateDate},
+          #{articleUrl},
+          #{articleTabloid},
+          #{likes},
+          #{lastArticleId},
+          #{nextArticleId})
+    </insert>
+    <update id="updateLastNextId">
+    update article set ${lastOrNextStr} = #{updateId}
+    </update>
+    <update id="updateArticle">
+        update article
+        set originalAuthor = #{originalAuthor},articleTitle = #{articleTitle} ,updateDate= #{updateDate} ,articleContent= #{articleContent} , articleTags= #{articleTags} ,articleType= #{articleType},articleCategories =#{articleCategories},articleUrl =#{articleUrl},articleTabloid =#{articleTabloid} where id=#{id}
+    </update>
+    <delete id="deleteArticle">
+        delete from article where articleId = #{articleId}
+    </delete>
+    <select id="getArticleManagement" resultType="com.javatiaocao.myblog.model.Article">
+        select * from article order by id desc
+    </select>
+    <select id="getArticleById" resultType="com.javatiaocao.myblog.model.Article">
+        select * from article where id = #{id}
+    </select>
+    <select id="getArticleTitleByArticleId" resultType="java.lang.String">
+        select articleTitle from article where articleId = #{articleId}
+    </select>
+    <select id="getArticleAuthorByArticleId" resultType="java.lang.String">
+        select author from article where  articleId = #{articleId}
+    </select>
+    <select id="findArticleTitleByArticleId" resultType="com.javatiaocao.myblog.model.Article">
+        select * from article where articleId = #{articleId}
+    </select>
+    <select id="getArticleByArticleId" resultType="com.javatiaocao.myblog.model.Article">
+        select * from article where articleId = #{articleId}
+    </select>
+
+</mapper>

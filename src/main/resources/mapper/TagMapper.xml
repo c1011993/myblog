@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javatiaocao.myblog.mapper.TagMapper">
+
+
+    <insert id="saveTags">
+        insert into tags(tagName, tagSize) values (#{tagName}, #{tagSize})
+    </insert>
+
+    <select id="findIsExistByTagName" resultType="java.lang.Boolean">
+        select IFNULL(max(id),0) from tags where tagName = #{tagName}
+    </select>
+    <select id="getTagsSizeByName" resultType="java.lang.Integer">
+        select MAX(tagSize) from tags where tagName = #{tagName}
+    </select>
+</mapper>
