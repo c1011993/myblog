@@ -27,7 +27,7 @@ import java.util.Objects;
  **/
 @Slf4j
 @RestController
-@Api(tags = "文章相关模块",value = "包含几块内容")
+@Api(tags = "文章相关模块.",value = "包含几块内容")
 public class ArticleController {
     @Autowired
     private TagService tagService;
