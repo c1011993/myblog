@@ -32,7 +32,7 @@ public class BackController {
     ArticleService articleService;
 
     /**
-     * 跳转至首页
+     * 跳转至首页 (测试请忽略这句话）
      */
     @GetMapping("/")
     public String index(HttpServletRequest request, HttpServletResponse response) {
